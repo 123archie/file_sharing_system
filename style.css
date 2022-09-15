@@ -6,7 +6,8 @@ body{
     text-align: center;
     margin-top: -23%;
     margin-right: 40px;
-        
+    height: 600px; 
+    width: 600px;   
  }
 p{
     font-size: 25px;
@@ -14,4 +15,10 @@ p{
     font-family: 'League Spartan', sans-serif;
     margin-left: 40px;
     margin-top: 30%;
+}
+#form_btn{
+    width: 400px;
+    margin-left: 40px;
+    margin-bottom: 5%;
+    font-size: 30px;
 }
