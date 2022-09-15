@@ -1,0 +1,17 @@
+body{
+    background-image: linear-gradient(90deg, #60C1B6, #B5E9E3);
+    overflow: hidden;}
+#illustration{
+    float: right;
+    text-align: center;
+    margin-top: -23%;
+    margin-right: 40px;
+        
+ }
+p{
+    font-size: 25px;
+    color: #244541;
+    font-family: 'League Spartan', sans-serif;
+    margin-left: 40px;
+    margin-top: 30%;
+}
