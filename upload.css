@@ -21,7 +21,7 @@ a #hamburger:hover{
     
   }
 #hamburger_menu{
-    /* color: white; */
+    color: white;
     content: url('https://api.iconify.design/radix-icons/hamburger-menu.svg?color=white&width=35&height=35');
     margin: 1%;
     cursor: pointer;
@@ -29,14 +29,16 @@ a #hamburger:hover{
 
 #sidebar{
     height:100%;
-    bottom: 0%;
     width: 20%;
+    position: fixed;
+    z-index: 1;
     background-color: #18a292;
     
 }
 #sidebar a{
     
     padding: 5%;
+    height: 100%;
     display: block;
     margin-left: 17%;
     font-family: 'League spartan',sans-serif;
