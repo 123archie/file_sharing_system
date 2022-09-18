@@ -1,6 +1,53 @@
+body{
+    background-image: linear-gradient(90deg, #60C1B6, #B5E9E3);   
+    margin: 0%;}
 nav{
-    background-color: #60C1B6; 
-    position: fixed;
-
+    position: sticky;
+    background-color: #18a292;
+   border: 0%;
+   margin: 0%;
 }
+
+#hamburger{
+     width: fit-content;
+     height: fit-content;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;}
+
+a #hamburger:hover{
+    background-color:rgba(0, 0, 0, 0.1);
+    
+  }
+#hamburger_menu{
+    /* color: white; */
+    content: url('https://api.iconify.design/radix-icons/hamburger-menu.svg?color=white&width=35&height=35');
+    margin: 1%;
+    cursor: pointer;
+}
+
+#sidebar{
+    height:100%;
+    bottom: 0%;
+    width: 20%;
+    background-color: #18a292;
+    
+}
+#sidebar a{
+    
+    padding: 5%;
+    display: block;
+    margin-left: 17%;
+    font-family: 'League spartan',sans-serif;
+    text-decoration: none;
+    font-size: larger;
+    color: white;
+    word-wrap: none;
+   
+}
+
+
+
+
 
