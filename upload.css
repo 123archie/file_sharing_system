@@ -46,18 +46,21 @@ a #hamburger:hover {
   display: block;
   font-family: "League spartan", sans-serif;
   text-decoration: none;
-  font-size: larger;
+  font-size: 22px;
   color: white;
   transition: 0.3s;
+  text-align: center;
 }
 
 .settings {
+    margin-top: 50px;
   width: 100%;
 }
 .settings a:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 #sidebar #cross {
+ float: top;
   color: white;
   content: url("https://api.iconify.design/akar-icons/cross.svg?color=white&width=20&height=20");
   position: absolute;
