@@ -19,6 +19,7 @@ nav {
   padding-left: 20px;
   padding-right: 20px;
   transition: margin-left 0.5s;
+  
 }
 
 a #hamburger:hover {
@@ -33,14 +34,12 @@ a #hamburger:hover {
 
 #sidebar {
   height: 100%;
-  width: 0%;
   position: fixed;
   z-index: 1;
   background-color: #18a292;
   overflow-x: hidden;
   transition: 0.5s;
-  
-}
+  visibility: hidden;}
 #sidebar a {
   padding: 10px 10px 10px 10px;
   margin-top: 25px;
@@ -51,11 +50,15 @@ a #hamburger:hover {
   color: white;
   transition: 0.3s;
   text-align: center;
-}
+  
+ }
 
 .settings {
-    margin-top: 50px;
+  margin-top: 50px;
   width: 100%;
+}
+.settings a{
+  width: 290px;
 }
 .settings a:hover {
   background-color: rgba(0, 0, 0, 0.1);
@@ -75,9 +78,7 @@ a #hamburger:hover {
   margin-top: 7%;
   margin-left: 7%;
  }
- #dropbox{
-  float: right;
- }
+
 #dropbox{
   float: right;
   width:600px;
@@ -86,6 +87,7 @@ a #hamburger:hover {
   margin-right: 10%;
   margin-top: 3%;
   border-radius: 35px;
+  border: 3px solid #18a292;
    }
 #plus{
   margin-left: 225px;
@@ -99,4 +101,8 @@ a #hamburger:hover {
   color: #18a292;
   
 }
+#fileInput{
+  display: none;
+}
+
 
