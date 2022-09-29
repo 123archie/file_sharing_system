@@ -3,10 +3,12 @@ const dotenv = require('dotenv');
 dotenv.config();
 const app = express();
 const connectDB = require("./database");
+// connectDB();
 const PORT = process.env.PORT || 5500;
 app.listen(PORT, () => {
   console.log(`Listening to port ${PORT}`);
 });
+
 
 
 
