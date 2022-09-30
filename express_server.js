@@ -2,9 +2,10 @@ const express = require('express');
 const dotenv = require('dotenv');
 dotenv.config();
 const app = express();
-const connectDB = require("./database");
-// connectDB();
 const PORT = process.env.PORT || 5500;
+const connectDB = require("./database");
+app.use('/api/file_sharing', require('./routes/files'));
+connectDB();
 app.listen(PORT, () => {
   console.log(`Listening to port ${PORT}`);
 });
@@ -12,14 +13,3 @@ app.listen(PORT, () => {
 
 
 
-// const mongoose=require('mongoose');
-// console.log(PORT);
-
-// mongoose.connect(process.env.MONGOURL
-//     ).then(result=>{
-//         app.listen(PORT);
-//             console.log(`Listening to port ${PORT}`);
-//     })
-//     .catch(err=>{
-//         console.log(err);
-//     })
