@@ -8,8 +8,6 @@ let storage=multer.diskStorage({
   filename:(req, file, cb) =>{
     const uniqueName=`${Date.now()}-${Math.round(Math.random()*1E9)}${path.extname(files.originalname)}`;
     cb(null, uniqueName);}
- 
-  
 });
 let upload=multer({
  storage:storage
