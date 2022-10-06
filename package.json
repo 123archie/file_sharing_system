@@ -23,6 +23,7 @@
     "dotenv": "^16.0.2",
     "ee-first": "^1.1.1",
     "encodeurl": "^1.0.2",
+    "err": "^2.1.12",
     "escape-html": "^1.0.3",
     "etag": "^1.8.1",
     "finalhandler": "^1.2.0",
