@@ -1,20 +1,20 @@
-const router = require('express').Router();
-const File=require('./models/fileSchema');
-router.get('/:uuid', async (req, resp) => {
-  try {
-    const file_uuid = await File.findOne({ uuid: req.params.uuid });
-    if (!file_uuid) {
-      return resp.render('upload',{
-        message: 'Link expired'
-      })}
-    return resp.render('upload',{
-        uuid:file_uuid.uuid,
-        download: `${process.env.APP_BASE_URL}/file/download/${file_uuid.uuid}`
-        //Actual Download link
-    })
-  }
-  catch (err) {
-    return resp.render('upload',{ error: "Something went wrong" });
-  }
-});
-module.exports = router;
+// const router = require('express').Router();
+// const File=require('./models/fileSchema');
+// router.get('/:uuid', async (req, resp) => {
+//   try {
+//     const file_uuid = await File.findOne({ uuid: req.params.uuid });
+//     if (!file_uuid) {
+//       return resp.render('upload',{
+//         message: 'Link expired'
+//       })}
+//     return resp.render('upload',{
+//         uuid:file_uuid.uuid,
+//         download: `${process.env.APP_BASE_URL}/file/download/${file_uuid.uuid}`
+//         //Actual Download link
+//     })
+//   }
+//   catch (err) {
+//     return resp.render('upload',{ error: "Something went wrong" });
+//   }
+// });
+// module.exports = router;
