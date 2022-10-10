@@ -36,8 +36,8 @@ upload(req, resp, async (err) => {
       size: req.file.size
     });
        const response = await file.save();
-    return resp.json({
-      // file: `${process.env.APP_BASE_URL}/file/${response.uuid}`,
+     return resp.json({
+      file: `${process.env.APP_BASE_URL}/file/${response.uuid}`,
       message: "File uploaded successfully"
 
     })
