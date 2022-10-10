@@ -2,8 +2,12 @@ const routes = require("express").Router();
 const multer = require("multer");
 const path = require("path");
 const File = require("./models/fileSchema");
+const express=require('express')
+const app=express();
 const { v4: uuid4 } = require('uuid');
-const err=require('err');
+const { append } = require("vary");
+const { message } = require("statuses");
+const { response } = require("express");
 let storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, "uploads/"),
   filename: (req, file, cb) => {
@@ -34,14 +38,19 @@ upload(req, resp, async (err) => {
       uuid: uuid4(),
       path: req.file.path,
       size: req.file.size
-    });
-       const response = await file.save();
-     return resp.json({
-      file: `${process.env.APP_BASE_URL}/file/${response.uuid}`,
-      message: "File uploaded successfully"
-
     })
-  });
-  //Generate response
-});
+       const response = await file.save();
+       const file_uuid=File.findOne({uuid: req.params.uuid});
+        if(!file_uuid){
+         return resp.json("Link is expired");
+        }
+        return resp.json({
+          message: "File uploaded successfully",
+          download: `${process.env.APP_BASE_URL}/file/download/${file.uuid}`
+        //Actual Download link
+      }
+        )
+       } 
+   )
+ });
 module.exports = routes;

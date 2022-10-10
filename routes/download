@@ -6,13 +6,15 @@ router.get('/:uuid', async (req, resp) => {
     if (!file_uuid) {
       return resp.render('upload',{
         message: 'Link expired'
-      })
-    }
-    return resp.render('',{
-        download: `${process.env.APP_BASE_URL}/file/download/${file_uuid}`
-    });
-  } catch (err) {
-    return resp.render('',{ error: "Something went wrong" });
+      })}
+    return resp.render('upload',{
+        uuid:file_uuid.uuid,
+        download: `${process.env.APP_BASE_URL}/file/download/${file_uuid.uuid}`
+        //Actual Download link
+    })
+  }
+  catch (err) {
+    return resp.render('upload',{ error: "Something went wrong" });
   }
 });
 module.exports = router;
