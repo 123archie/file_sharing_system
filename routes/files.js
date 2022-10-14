@@ -38,7 +38,7 @@ upload(req, resp, async (error) => {
       size: req.file.size
     }) 
        const response = await file.save();
-       const file_uuid=File.findOne({uuid: req.params});
+       const file_uuid=File.findOne({uuid: req.params.uuid});
         if(!file_uuid){
          return resp.json("Link is expired");
         }
