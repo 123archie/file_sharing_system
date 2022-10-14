@@ -8,6 +8,7 @@ const connectDB = require("./database");
 app.set("./views", path.join(__dirname, "/views"));
 app.set("view engine");
 app.use("/api/file_sharing", require("./routes/files"));
+// app.use("/api/file_sharing", require("./routes/download"));
 app.use("/file/download", require("./routes/downloadlink"));
 connectDB();
 app.listen(PORT, () => {
