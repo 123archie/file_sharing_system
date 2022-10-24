@@ -1,5 +1,7 @@
 let droparea=document.getElementById("dropbox");
 const fileinput=document.getElementById("fileInput");
+const host='https://medias-share.herokuapp.com/'
+const uploadURL=`http://localhost:5500/api/file_sharing/test`
 function closeNav() {
   document.getElementById("sidebar").style.width = "0";
 }
@@ -23,10 +25,9 @@ droparea.addEventListener("drop", function(e){
  if(files.length){
   console.log(files.length);
   console.log(files);
-  fileinput.files;
- }
-  uploadfiles()
-});
+  fileinput.files
+   uploadfiles()
+}});
 
 function uploadfiles(){
   const file=fileinput.files[0];
@@ -35,6 +36,8 @@ function uploadfiles(){
   const xhr=new XMLHttpRequest();
   xhr.onreadystatechange=()=>{
     console.log(xhr.readyState);
-  }
-}
+      }
+  xhr.open('POST', uploadURL)
+  xhr.send(formData);
+    }
 

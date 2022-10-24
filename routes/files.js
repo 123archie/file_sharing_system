@@ -5,7 +5,6 @@ const File = require("./models/fileSchema");
 const express=require('express')
 const app=express();
 const { v4: uuid4 } = require('uuid');
-const { error } = require("console");
 let storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, "uploads/"),
   filename: (req, file, cb) => {
@@ -45,11 +44,12 @@ upload(req, resp, async (error) => {
         return resp.json({
           message: "File uploaded successfully",
           download: `${process.env.APP_BASE_URL}/file/download/${file.uuid}`
-        // Actual Download link
+          // Actual Download link
       }
         )
             
        } 
    )
  });
+ 
 module.exports = routes;
