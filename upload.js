@@ -1,7 +1,7 @@
 let droparea=document.getElementById("dropbox");
 const fileinput=document.getElementById("fileInput");
-const host='https://medias-share.herokuapp.com/'
-// const host=`http://localhost:5500`
+// const host='https://medias-share.herokuapp.com/'
+const host=`http://localhost:5500`
 const uploadURL=`${host}/api/file_sharing/test`
 function closeNav() {
   document.getElementById("sidebar").style.width = "0";
