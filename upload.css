@@ -1,3 +1,6 @@
+@media all and (max-width:760px) {
+    
+}
 body {
   background-image: linear-gradient(90deg, #60c1b6, #b5e9e3);
   margin: 0%;
@@ -10,7 +13,13 @@ nav {
   border: 0%;
   margin: 0%;
 }
-
+#hamburger_menu {
+  color: white;
+  content: url("https://api.iconify.design/radix-icons/hamburger-menu.svg?color=white&width=35&height=35");
+  margin: 1%;
+  cursor: pointer;
+}
+@media all and (min-width: 760px) {
 #hamburger {
   width: fit-content;
   height: fit-content;
@@ -25,12 +34,7 @@ nav {
 a #hamburger:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
-#hamburger_menu {
-  color: white;
-  content: url("https://api.iconify.design/radix-icons/hamburger-menu.svg?color=white&width=35&height=35");
-  margin: 1%;
-  cursor: pointer;
-}
+
 
 #sidebar {
   height: 100%;
@@ -104,5 +108,5 @@ a #hamburger:hover {
 #fileInput{
   display: none;
 }
-
+ 
 
