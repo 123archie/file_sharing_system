@@ -35,9 +35,17 @@ droparea.addEventListener("drop", function(e){
 }});
 function upload(){
   FILE.click();
-  UPLOAD.addEventListener("change",()=>{
+  UPLOAD.addEventListener('change', function(ev2){
     const el=window._protected_reference=document.createElement('INPUT')
-  }
+    el.type="file"
+    el.addEventListener('change', ()=>{
+      if(el.files.length){
+        fileinput.files=el.files;
+        uploadfiles()
+      }
+      
+    })
+  })
     
   
 
