@@ -1,3 +1,5 @@
+const { resolve } = require("path");
+
 let droparea=document.getElementById('dropbox');
 const fileinput=document.getElementById('fileInput');
 const uploadbtn=document.getElementById('upload_btn')
@@ -43,9 +45,14 @@ function upload(){
         fileinput.files=el.files;
         uploadfiles()
       }
-      
-    })
-  })
+      new Promise(function(resolve){
+        setTimeout(function(){
+          console.log(el.files);
+          resolve;
+        }, 1000)
+      }
+    )
+})
     
   
 
