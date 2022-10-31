@@ -1,5 +1,3 @@
-const { resolve } = require("path");
-
 let droparea=document.getElementById('dropbox');
 const fileinput=document.getElementById('fileInput');
 const uploadbtn=document.getElementById('upload_btn')
@@ -34,7 +32,9 @@ droparea.addEventListener("drop", function(e){
   console.log("File: " +files);
   fileinput.files=files;
    uploadfiles()
+   
 }});
+
 function upload(){
   FILE.click();
   UPLOAD.addEventListener('change', function(ev2){
@@ -51,12 +51,11 @@ function upload(){
           resolve;
         }, 1000)
       }
-    )
+    ).then(function(){
+      el=window._protected_reference=undefined;
 })
-    
-  
-
-}
+})
+el.click()});}
 
 function uploadfiles(){
   const file=fileinput.files[0];
@@ -68,5 +67,5 @@ function uploadfiles(){
       }
   xhr.open('POST', uploadURL)
   xhr.send(formData);
-    }
+}
 
