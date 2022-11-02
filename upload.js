@@ -1,7 +1,9 @@
 let droparea=document.getElementById('dropbox');
 const fileinput=document.getElementById('fileInput');
 const uploadbtn=document.getElementById('upload_btn')
+
 // const host='https://medias-share.herokuapp.com/'
+
 const host=`http://localhost:5500`
 const FILE=document.getElementById('fileinput')
 const UPLOAD=document.getElementById('button')
@@ -31,39 +33,60 @@ droparea.addEventListener("drop", function(e){
   console.log("File Length: "+files.length);
   console.log("File: " +files);
   fileinput.files=files;
+  console.log(files);
    uploadfiles()
    
 }});
 
 function upload(){
-  console.log("upload");
+  // console.log("upload");
   FILE.click();
-  console.log(UPLOAD);
-  UPLOAD.click(()=>{
-    console.error("error");
-    var el=window._protected_reference=document.createElement('INPUT')
-    console.log(el);
-    el.type="file"
-    el.addEventListener('change', ()=>{
-      if(el.files.length){
-        fileinput.files=el.files;
-        uploadfiles()
-      }
-      new Promise(function(resolve){
-        setTimeout(function(){
-          console.log(el.files);
-          resolve;
-        }, 1000)
-      }
-    ).then(function(){
-      el=window._protected_reference=undefined;
-})
-})
-el.click()});}
+  // const file=FILE.files[0];
+  const formData=document.getElementById('form')
+  const files=new FormData(formData);
+  // files.append('myfile', file);
+  console.log("FormData: "+files)
+ if(files){
+    const xhr=new XMLHttpRequest();
+    xhr.onreadystatechange=()=>{
+      console.log("XHR: "+xhr.readyState);
+        }
+    xhr.open('POST', uploadURL)
+    xhr.send(files)
+  }
+    }
+
+ 
+  // console.log(UPLOAD);
+//   UPLOAD.addEventListener('change',(e)=>{
+//     e.preventDefault();
+//     console.log("upload event");
+//     var el=window._protected_reference=document.createElement('INPUT')
+//     console.log(el);
+//     el.type="file"
+//     el.addEventListener('change', ()=>{
+//       if(el.files.length){
+//         fileinput.files=el.files;
+//         uploadfiles()
+//       }
+//       new Promise(function(resolve){
+//         setTimeout(function(){
+//           console.log(el.files);
+//           resolve;
+//         }, 1000)
+//       }
+//     ).then(function(){
+//       el=window._protected_reference=undefined;
+// })
+// })
+// el.click()});
+
+
 
 function uploadfiles(){
   const file=fileinput.files[0];
   const formData=new FormData();
+  console.log("FormData: "+formData)
   formData.append('myfile', file)
   const xhr=new XMLHttpRequest();
   xhr.onreadystatechange=()=>{
