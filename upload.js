@@ -30,7 +30,7 @@ droparea.addEventListener("drop", function (e) {
   if (files.length) {
     console.log("File Length: " + files.length);
     console.log("File: " + files);
-    fileinput.files = files;
+    fileinput.files=files;
     console.log(files);
     uploadfiles();
   }
@@ -94,12 +94,16 @@ function uploadfiles() {
     if (xhr.readyState === XMLHttpRequest.DONE) {
       console.log(xhr.readyState);
     }
-  };
-  
+  }
+  xhr.upload.addEventListener('onprogress',(e)=>{
+    const percent=(e.loaded/e.total)*100;
+    if(percent==100){
+      document.write("This link will expire in 24 hrs");
+    }
+    console.log(e);
+  });
   xhr.open("POST", uploadURL);
-  xhr.upload.onprogress=updateProgress();
    xhr.send(formData);
-}
-function updateProgress(e){
-  console.log();
-}
+};
+
+

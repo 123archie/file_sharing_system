@@ -14,7 +14,7 @@ app.use("/file/download", require("./routes/downloadlink"));
 connectDB();
 const corsOptions={
    origin:process.env.ALLOW_REQUEST.split(',')
-}
+   }
 app.use(cors(corsOptions));
 app.listen(PORT, () => {
   console.log(`Listening to port ${PORT}`);
