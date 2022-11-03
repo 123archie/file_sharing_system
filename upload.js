@@ -97,15 +97,9 @@ function uploadfiles() {
   };
   
   xhr.open("POST", uploadURL);
-  xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-  xhr.upload.onprogress = updateProgress;
-  xhr.send(formData);
+  xhr.upload.onprogress=updateProgress();
+   xhr.send(formData);
 }
-const updateProgress = (e) => {
-  const percent = (e.loaded / e.total) * 100;
-  if (percent == 100) {
-    //  document.write("This link will expire in 24 hrs.");
-   console.log(e);
-  }
-};
-// )}
+function updateProgress(e){
+  console.log();
+}

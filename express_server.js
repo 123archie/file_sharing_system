@@ -8,15 +8,12 @@ const PORT = process.env.PORT || 5500;
 const connectDB = require("./database");
 app.set("./views", path.join(__dirname, "/views"));
 app.set("view engine");
-app.get('/allow-cors', function(req, resp){
-  resp.setHeader('Access-Control-Allow-Origin', '*');
-  })
 app.use("/api/file_sharing", require("./routes/files"));
 // app.use("/api/file_sharing", require("./routes/download"));
 app.use("/file/download", require("./routes/downloadlink"));
 connectDB();
 const corsOptions={
-  origin:process.env.ALLOW_REQUEST.split(',')
+   origin:process.env.ALLOW_REQUEST.split(',')
 }
 app.use(cors(corsOptions));
 app.listen(PORT, () => {
