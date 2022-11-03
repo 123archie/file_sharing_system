@@ -38,13 +38,17 @@ upload(req, resp, async (error) => {
     }) 
        const response = await file.save();
        const file_uuid=File.findOne({uuid: req.params.uuid});
-        if(!file_uuid){
+       if(!file_uuid){
          return resp.json("Link is expired");
         }
         return resp.json({
           message: "File uploaded successfully",
+          
           download: `${process.env.APP_BASE_URL}/file/download/${file.uuid}`
+        
           // Actual Download link
+          
+
          
       }
         )
