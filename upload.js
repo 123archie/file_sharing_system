@@ -97,12 +97,20 @@ function uploadfiles() {
       console.log(xhr.readyState);
     }
   }
-  const upload=xhr.upload.onprogress=(e)=>{
-    console.log(e);
-  };
-  
+  console.log(xhr.upload.onprogress);
+  // xhr.upload.onprogress=updateProgress;
+  xhr.upload.onprogress=updateprogress();
+  // xhr.addEventListener(pr, (e)=>{
+  //   console.log(e);
+  // })
+  console.log("Hi");
   xhr.open("POST", uploadURL);
    xhr.send(formData);
+ 
 };
+const updateprogress=(e)=>{
+  console.log(e);
+};
+
 
 
