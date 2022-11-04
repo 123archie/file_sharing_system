@@ -85,9 +85,11 @@ function upload() {
 
 function uploadfiles() {
   const file = fileinput.files[0];
+  console.log(file);
   const formData = new FormData();
-  console.log("FormData: " + formData);
   formData.append("myfile", file);
+  
+  console.log("FormData: " + formData);
   const xhr = new XMLHttpRequest();
 
   xhr.onreadystatechange = () => {
@@ -95,13 +97,10 @@ function uploadfiles() {
       console.log(xhr.readyState);
     }
   }
-  xhr.upload.addEventListener('onprogress',(e)=>{
-    const percent=(e.loaded/e.total)*100;
-    if(percent==100){
-      document.write("This link will expire in 24 hrs");
-    }
+  const upload=xhr.upload.onprogress=(e)=>{
     console.log(e);
-  });
+  };
+  
   xhr.open("POST", uploadURL);
    xhr.send(formData);
 };
