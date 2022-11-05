@@ -16,9 +16,7 @@ app.use("/api/file_sharing", require("./routes/files"));
 // app.use("/api/file_sharing", require("./routes/download"));
 app.use("/file/download", require("./routes/downloadlink"));
 connectDB();
-const corsOptions={
-  origin:"*"
-  }
+
 app.use(cors(corsOptions));
 app.listen(PORT, () => {
   console.log(`Listening to port ${PORT}`);
