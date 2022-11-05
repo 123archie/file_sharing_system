@@ -1,12 +1,13 @@
 let droparea = document.getElementById("dropbox");
 const fileinput = document.getElementById("fileInput");
 const uploadbtn = document.getElementById("upload_btn");
-// const host='https://medias-share.herokuapp.com/'
-const host = `http://localhost:5500`;
+const host='https://medias-share.herokuapp.com/'
+// const host = `innshare.herokuapp.com`;
+const uploadURL = `${host}/api/file_sharing`;
 const FILE = document.getElementById("fileinput");
 const UPLOAD = document.getElementById("button");
 const SUBMIT = document.getElementById("submitfile");
-const uploadURL = `${host}/api/file_sharing/test`;
+
 function closeNav() {
   document.getElementById("sidebar").style.width = "0";
 }
@@ -17,47 +18,43 @@ function openNav() {
 }
 droparea.addEventListener("dragover", (e) => {
   e.preventDefault();
+  droparea.classList.add("dragged")
   droparea.style.backgroundColor = "rgb(160, 254, 215)";
   console.log("dragging");
 });
 droparea.addEventListener("dragleave", function (e) {
+  droparea.classList.remove("dragged")
   droparea.style.backgroundColor = "white";
 });
 droparea.addEventListener("drop", function (e) {
   e.preventDefault();
+  droparea.classList.remove("dragged")
   droparea.style.backgroundColor = "white";
   const files = e.dataTransfer.files;
   if (files.length) {
-    console.log("File Length: " + files.length);
-    console.log("File: " + files);
-    fileinput.files=files;
-    console.log(files);
+    fileinput.files = files;
     uploadfiles();
   }
 });
 //Upload button functionality
-function upload() {
-  // console.log("upload");
-  FILE.click();
-  // const file=FILE.files[0];
-  const formData = document.getElementById("form");
-  const files = new FormData(formData);
-  // files.append('myfile', file);
-  console.log("FormData: " + files);
-  if (files) {
-    const xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = () => {
-      console.log("XHR: " + xhr.readyState);
-    };
-    xhr.open("POST", uploadURL);
-    xhr.send(files);
-  }
-}
-// async function upload(){
-//  FILE.addEventListener('change', ()=>{
-//   uploadfiles();
-//  })
+// function upload() {
+//   // console.log("upload");
+//   fileinput.click();
+//   // const file=FILE.files[0];
+//   const formData = document.getElementById("form");
+//   const files = new FormData(formData);
+//   // files.append('myfile', file);
+//   console.log("FormData: " + files);
+//   if (files) {
+//     const xhr = new XMLHttpRequest();
+//     xhr.onreadystatechange = () => {
+//       console.log("XHR: " + xhr.readyState);
+//     };
+//     xhr.open("POST", uploadURL);
+//     xhr.send(files);
+//   }
 // }
+
 
 // console.log(UPLOAD);
 //   UPLOAD.addEventListener('change',(e)=>{
@@ -82,26 +79,27 @@ function upload() {
 // })
 // })
 // el.click()});
+fileinput.addEventListener('change', ()=>{
+  uploadfiles();
+})
+document.getElementById("button").addEventListener('click', (e)=>{
+  fileinput.click();
+})
 
 function uploadfiles() {
   const file = fileinput.files[0];
-  console.log(file);
   const formData = new FormData();
   formData.append("myfile", file);
-  console.log("FormData: " + formData);
   const xhr = new XMLHttpRequest();
   xhr.onreadystatechange = () => {
     if (xhr.readyState === XMLHttpRequest.DONE) {
-      console.log(xhr.readyState);
+      console.log(xhr.responseText);
     }
-  }
-  xhr.upload.onprogress=(e)=>{
-    const percent=(e.loaded/e.total)*100;
-    if(percent==100){
-      document.getElementById("message").innerHTML="This link will expire in 24 hrs."   }
-    console.log(e);
-  }
-   xhr.open("POST", uploadURL);
-   xhr.send(formData);
-  
   };
+  xhr.upload.onprogress=uploadProgress;
+  xhr.open("POST", uploadURL);
+  xhr.send(formData);
+};
+const uploadProgress=(e)=>{
+  console.log(e);
+}
