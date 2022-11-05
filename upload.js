@@ -97,11 +97,12 @@ function uploadfiles() {
       console.log(xhr.responseText);
     }
   };
-  xhr.upload.onprogress=uploadProgress();
+  xhr.upload.onprogress=(e)=>{
+    const percent=(e.loaded/e.total)*100;
+    console.log(percent);
+  
+  };
   xhr.open("POST", uploadURL);
   xhr.send(formData);
 };
-const uploadProgress=(e)=>{
-  console.log(e);
-  
-}
+
