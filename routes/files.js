@@ -27,10 +27,8 @@ upload(req, resp, async (error) => {
   if (error) {
     return resp.status(500).send({ error: error.message });
   }
-    
-    //Storing in the database
-  
-    const file = new File({
+     //Storing in the database
+      const file = new File({
       filename: req.file.filename,
       uuid: uuid4(),
       path: req.file.path,
@@ -43,17 +41,11 @@ upload(req, resp, async (error) => {
         }
         return resp.json({
           message: "File uploaded successfully",
-          
-          download: `${process.env.APP_BASE_URL}/file/download/${file.uuid}`
-        
+          download: `${process.env.APP_BASE_URL}/file/download/${file.uuid}`,
           // Actual Download link
-          
-
-         
-      }
+            }
         )
-            
-       } 
+      } 
    )
  });
  
