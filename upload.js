@@ -88,29 +88,20 @@ function uploadfiles() {
   console.log(file);
   const formData = new FormData();
   formData.append("myfile", file);
-  
   console.log("FormData: " + formData);
   const xhr = new XMLHttpRequest();
-
   xhr.onreadystatechange = () => {
     if (xhr.readyState === XMLHttpRequest.DONE) {
       console.log(xhr.readyState);
     }
   }
-  console.log(xhr.upload.onprogress);
-  // xhr.upload.onprogress=updateProgress;
-  xhr.upload.onprogress=updateprogress();
-  // xhr.addEventListener(pr, (e)=>{
-  //   console.log(e);
-  // })
-  console.log("Hi");
-  xhr.open("POST", uploadURL);
+  xhr.upload.onprogress=(e)=>{
+    const percent=(e.loaded/e.total)*100;
+    if(percent==100){
+      document.getElementById("message").innerHTML="This link will expire in 24 hrs."   }
+    console.log(e);
+  }
+   xhr.open("POST", uploadURL);
    xhr.send(formData);
- 
-};
-const updateprogress=(e)=>{
-  console.log(e);
-};
-
-
-
+  
+  };
