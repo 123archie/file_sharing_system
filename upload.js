@@ -4,7 +4,7 @@ const uploadbtn = document.getElementById("upload_btn");
 // const host='https://medias-share.herokuapp.com/'
 // const host = `innshare.herokuapp.com`;
 // const uploadURL = `${host}/api/file_sharing`;
-const uploadURL=`http://localhost:5500/api/file_sharing`
+const uploadURL=`http://localhost:5500/api/file_sharing/test`
 const FILE = document.getElementById("fileinput");
 const UPLOAD = document.getElementById("button");
 const SUBMIT = document.getElementById("submitfile");
@@ -98,8 +98,34 @@ function uploadfiles() {
     }
   };
   xhr.upload.onprogress=(e)=>{
-    const percent=(e.loaded/e.total)*100;
+    const percent=Math.round((e.loaded/e.total)*100);
     console.log(percent);
+    if(percent==100){
+      const text=document.getElementById("message");
+      text.innerHTML="This link will expire in 24 hrs"
+      text.style.color="#18a292"
+      text.style.fontSize="1.5vw"
+      text.style.fontFamily="spartan,sans-serif"
+      text.style.textAlign="right"
+      text.style.marginRight="20%"
+    
+
+      const input =document.createElement("input")
+          input.setAttribute("type", "text");
+          document.body.appendChild(input);
+          input.style.width="600px"
+          input.style.height="40px"
+          input.style.fontSize="20px"
+          input.style.border="2px solid #18a292"
+          input.style.borderRadius="12px"
+          input.style.paddingLeft="10px"
+          input.style.fontFamily="spartan,sans-serif"
+          input.style.marginBottom="40%"
+          input.style.borderBlockColor="#18a292"
+          input.style.marginRight="20%"
+
+          // input.style.textAlign="right"
+            }
     console.log(e);
   };
   xhr.open("POST", uploadURL);
