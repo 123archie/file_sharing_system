@@ -4,7 +4,7 @@ const uploadbtn = document.getElementById("upload_btn");
 // const host='https://medias-share.herokuapp.com/'
 // const host = `innshare.herokuapp.com`;
 // const uploadURL = `${host}/api/file_sharing`;
-const uploadURL=`http://localhost:5500/api/file_sharing/test`
+const uploadURL=`http://localhost:5500/api/file_sharing`
 const FILE = document.getElementById("fileinput");
 const UPLOAD = document.getElementById("button");
 const SUBMIT = document.getElementById("submitfile");
@@ -100,7 +100,7 @@ function uploadfiles() {
   xhr.upload.onprogress=(e)=>{
     const percent=(e.loaded/e.total)*100;
     console.log(percent);
-  
+    console.log(e);
   };
   xhr.open("POST", uploadURL);
   xhr.send(formData);
