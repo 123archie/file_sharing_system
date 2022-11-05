@@ -1,9 +1,10 @@
 let droparea = document.getElementById("dropbox");
 const fileinput = document.getElementById("fileInput");
 const uploadbtn = document.getElementById("upload_btn");
-const host='https://medias-share.herokuapp.com/'
+// const host='https://medias-share.herokuapp.com/'
 // const host = `innshare.herokuapp.com`;
-const uploadURL = `${host}/api/file_sharing`;
+// const uploadURL = `${host}/api/file_sharing`;
+const uploadURL=`http://localhost:5500/api/file_sharing/test`
 const FILE = document.getElementById("fileinput");
 const UPLOAD = document.getElementById("button");
 const SUBMIT = document.getElementById("submitfile");
@@ -96,7 +97,7 @@ function uploadfiles() {
       console.log(xhr.responseText);
     }
   };
-  xhr.upload.onprogress=uploadProgress;
+  xhr.upload.onprogress=uploadProgress();
   xhr.open("POST", uploadURL);
   xhr.send(formData);
 };
