@@ -15,7 +15,7 @@ app.set("view engine");
 app.use("/api/file_sharing", require("./routes/files"));
 // app.use("/api/file_sharing", require("./routes/download"));
 app.use(function(req, resp, next){
-  // resp.methods("Access-Control-Allow-Methods", "POST");
+  resp.header("Allow", "*");
   resp.header("Access-Control-Allow-Origin", "*");
   resp.header("Access-Control-Allow-Headers", "*");
   next();
