@@ -123,12 +123,14 @@ function uploadfiles() {
           input.style.marginBottom="90%"
           input.style.borderBlockColor="#18a292"
           input.style.marginRight="20%"
-          input.
+          // input.
           // input.style.textAlign="right"
             }
     console.log(e);
   };
   xhr.open("POST", uploadURL);
+ 
+ xhr.setRequestHeader("Access-Control-Allow-Origin","*");
   xhr.send(formData);
 };
 
