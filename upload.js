@@ -120,17 +120,16 @@ function uploadfiles() {
           input.style.borderRadius="12px"
           input.style.paddingLeft="10px"
           input.style.fontFamily="spartan,sans-serif"
-          input.style.marginBottom="90%"
+          input.style.marginBottom="100%"
           input.style.borderBlockColor="#18a292"
           input.style.marginRight="20%"
-          // input.
-          // input.style.textAlign="right"
+          input.style.
             }
     console.log(e);
   };
   xhr.open("POST", uploadURL);
-  xhr.setRequestHeader("Access-Control-Request-Method", "POST");
- xhr.setRequestHeader("Access-Control-Request-Method", "POST");
+  // xhr.setRequestHeader("Access-Control-Request-Method", "POST");
+//  xhr.setRequestHeader("Access-Control-Request-Method", "POST");
  xhr.setRequestHeader("Access-Control-Allow-Origin","*");
  xhr.send(formData);
 };
