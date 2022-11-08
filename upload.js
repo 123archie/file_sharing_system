@@ -1,3 +1,4 @@
+// var require=require("./routes/files");
 let droparea = document.getElementById("dropbox");
 const fileinput = document.getElementById("fileInput");
 const uploadbtn = document.getElementById("upload_btn");
@@ -110,10 +111,9 @@ function uploadfiles() {
       text.style.marginRight="20%"
     
 
-      const input =document.createElement("#input")
+      const input =document.createElement("input")
           input.setAttribute("type", "text");
           document.body.appendChild(input);
-          
           input.style.width="600px"
           input.style.height="40px"
           input.style.fontSize="20px"
@@ -126,8 +126,10 @@ function uploadfiles() {
           // input.style.
           var media=window.matchMedia("max-width:760px");
           if(media.matches){
-            input.style.width="80%"
-          }
+            
+            input.style.width="100%"
+                   }
+          input.value=`${process.env.APP_BASE_URL}/file/download/${file.uuid}`;
           }  
 
     console.log(e);
