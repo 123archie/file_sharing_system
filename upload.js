@@ -123,7 +123,7 @@ function uploadfiles() {
           input.style.marginBottom="100%"
           input.style.borderBlockColor="#18a292"
           input.style.marginRight="20%"
-          input.style.
+          input.style.textAlign="right";
             }
     console.log(e);
   };
