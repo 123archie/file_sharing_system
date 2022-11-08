@@ -110,9 +110,10 @@ function uploadfiles() {
       text.style.marginRight="20%"
     
 
-      const input =document.createElement("input")
+      const input =document.createElement("#input")
           input.setAttribute("type", "text");
           document.body.appendChild(input);
+          
           input.style.width="600px"
           input.style.height="40px"
           input.style.fontSize="20px"
@@ -122,15 +123,19 @@ function uploadfiles() {
           input.style.fontFamily="spartan,sans-serif"
           input.style.marginBottom="100%"
           input.style.borderBlockColor="#18a292"
-          input.style.marginRight="20%"
-          input.style.textAlign="right";
-            }
+          // input.style.
+          var media=window.matchMedia("max-width:760px");
+          if(media.matches){
+            input.style.width="80%"
+          }
+          }  
+
     console.log(e);
   };
   xhr.open("POST", uploadURL);
   // xhr.setRequestHeader("Access-Control-Request-Method", "POST");
 //  xhr.setRequestHeader("Access-Control-Request-Method", "POST");
  xhr.setRequestHeader("Access-Control-Allow-Origin","*");
- xhr.send(formData);
+ xhr.send(formData)
 };
 
