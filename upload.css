@@ -111,7 +111,7 @@ a #hamburger:hover {
     display: block;
   }
  #dropbox{
-   /* visibility: hidden; */
+   visibility: hidden;
    max-width: 85%;
    text-align: center;
      }
