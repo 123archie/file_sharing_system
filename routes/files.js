@@ -29,8 +29,7 @@ upload(req, resp, async (error) => {
   }
     
     //Storing in the database
-  
-    const file = new File({
+      const file = new File({
       filename: req.file.filename,
       uuid: uuid4(),
       path: req.file.path,
@@ -43,17 +42,11 @@ upload(req, resp, async (error) => {
         }
         return resp.json({
           message: "File uploaded successfully",
-          
-          download: `${process.env.APP_BASE_URL}/file/download/${file.uuid}`
-        
+          download: `${process.env.APP_BASE_URL}/file/download/${file.uuid}`,
           // Actual Download link
-          
-
-         
-      }
+            }
         )
-            
-       } 
+      } 
    )
  });
  
