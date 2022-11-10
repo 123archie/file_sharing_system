@@ -40,7 +40,8 @@ upload(req, resp, async (error) => {
        if(!file_uuid){
          return resp.json("Link is expired");
         }
-        return resp.json({
+       let download=`${process.env.APP_BASE_URL}/file/download/${file.uuid}`;
+         return resp.json({
           message: "File uploaded successfully",
           download: `${process.env.APP_BASE_URL}/file/download/${file.uuid}`,
           // Actual Download link
@@ -49,5 +50,4 @@ upload(req, resp, async (error) => {
       } 
    )
  });
- 
 module.exports = routes;

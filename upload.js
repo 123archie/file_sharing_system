@@ -129,7 +129,7 @@ function uploadfiles() {
             
             input.style.width="100%"
                    }
-          input.value=`${process.env.APP_BASE_URL}/file/download/${file.uuid}`;
+          // input.value=
           }  
 
     console.log(e);
