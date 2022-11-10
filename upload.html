@@ -1,3 +1,5 @@
+<!-- @format -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,34 +11,60 @@
   </head>
   <body>
     <nav>
-      <a><div id="hamburger" onclick="openNav()">
+      <a
+        ><div id="hamburger" onclick="openNav()">
           <iconify-icon
             icon="radix-icons:hamburger-menu"
-            id="hamburger_menu"
-          ></iconify-icon></div></a>
+            id="hamburger_menu"></iconify-icon></div
+      ></a>
     </nav>
     <div id="sidebar" class="mySidebar">
-      <div id="crossicon"><a href="javascript:void(0)" id="cross" onclick="closeNav()"></a></div>
+      <div id="crossicon">
+        <a href="javascript:void(0)" id="cross" onclick="closeNav()"></a>
+      </div>
       <br /><br />
       <div class="settings">
         <a href="#">Language Settings</a>
         <a href="#">Account Settings</a>
       </div>
     </div>
-    <img src="images/file-transfer-concept-backup-data-technology-cloud-upload-download_199064-156-removebg-preview.png" alt="" id="file_transfer">
-    
-    <div id="dropbox">
-      <input type="file" name="InputFile" id="fileInput">
-      <iconify-icon icon="akar-icons:circle-plus" style="color:#18a292;"width="130"height="130;" id="plus"></iconify-icon>
-      <p id="Droptext">Drop files here</p>
-    </div> 
-    <form action="" method="post" id="form">
-      <input id="fileinput" type="file" hidden>
-      <input type="button" value="Upload File" onclick="upload()" id="button">
-      <input type="submit" id="submitfile" hidden>
-    </form>
+    <div class="main-div">
+      <div id="file_transfer">
+        <img
+          src="images/file-transfer-concept-backup-data-technology-cloud-upload-download_199064-156-removebg-preview.png"
+          alt="" />
+      </div>
+      <div class="content">
+        <div id="dropbox">
+          <input type="file" name="InputFile" id="fileInput" />
+          <div class="icon">
+            <iconify-icon
+              icon="akar-icons:circle-plus"
+              style="color: #18a292"
+              width="130"
+              height="130"
+              id="plus"></iconify-icon>
+            
+          </div>
+
+          <p id="Droptext">Drop files here</p>
+        </div>
+
+        <div class="upload">
+          <form action="" method="post">
+            <input id="fileinput" type="file" hidden />
+            <input
+              type="button"
+              value="Upload File"
+              onclick="upload()"
+              id="button" />
+            <input type="submit" id="submitfile" hidden />
+          </form>
+        </div>
+      </div>
+    </div>
     <script src="https://code.iconify.design/iconify-icon/1.0.0/iconify-icon.min.js"></script>
     <script src="upload.js"></script>
   </body>
-  
 </html>
+
