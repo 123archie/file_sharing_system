@@ -138,7 +138,7 @@ function uploadfiles() {
   xhr.open('POST', uploadURL);
 //   xhr.setRequestHeader("Access-Control-Request-Method", "POST");
 //  xhr.setRequestHeader("Access-Control-Request-Method", "POST");
- xhr.setRequestHeader("Access-Control-Allow-Origin", "POST");
+ xhr.addRequestHeader("Access-Control-Allow-Origin", "*");
  xhr.send(formData)
 };
 
