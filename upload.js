@@ -2,10 +2,10 @@
 let droparea = document.getElementById("dropbox");
 const fileinput = document.getElementById("fileInput");
 const uploadbtn = document.getElementById("upload_btn");
-// const host='https://medias-share.herokuapp.com/'
+const host='https://medias-share.herokuapp.com/'
 // const host = `innshare.herokuapp.com`;
-// const uploadURL = `${host}/api/file_sharing`;
-const uploadURL=`http://localhost:5500/api/file_sharing/test`
+const uploadURL = `${host}/api/file_sharing`;
+// const uploadURL=`http://localhost:5500/api/file_sharing/test`
 const FILE = document.getElementById("fileinput");
 const UPLOAD = document.getElementById("button");
 const SUBMIT = document.getElementById("submitfile");
@@ -129,15 +129,16 @@ function uploadfiles() {
             
             input.style.width="100%"
                    }
-          // input.value=
+          // input.value=scope.displayDetails;
+          // console.log(scope.cachedOptions);
           }  
 
     console.log(e);
   };
-  xhr.open("POST", uploadURL);
-  // xhr.setRequestHeader("Access-Control-Request-Method", "POST");
+  xhr.open('POST', uploadURL);
+//   xhr.setRequestHeader("Access-Control-Request-Method", "POST");
 //  xhr.setRequestHeader("Access-Control-Request-Method", "POST");
- xhr.setRequestHeader("Access-Control-Allow-Origin","*");
+ xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
  xhr.send(formData)
 };
 
