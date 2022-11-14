@@ -1,4 +1,5 @@
 let droparea = document.getElementById("dropbox");
+var form=document.getElementById("form");
 const fileinput = document.getElementById("fileInput");
 const uploadbtn = document.getElementById("upload_btn");
 // const axios = require("axios");
@@ -79,17 +80,20 @@ droparea.addEventListener("drop", (e) => {
 // })
 // })
 // el.click()});
-fileinput.addEventListener("onchange", () => {
+fileinput.addEventListener("change", () => {
   uploadfiles();
 });
-document.getElementById("button").addEventListener("onclick", (e) => {
+document.getElementById("button").addEventListener("click", (e) => {
   fileinput.click();
 });
 
 function uploadfiles() {
   const file = fileinput.files[0];
-  const formData = new FormData();
-  formData.append("myfile", file);
+  console.log(file);
+  let formData = new FormData(form);
+  console.log(formData.entries());
+  formData.append("myfile", file[0]);
+  console.log(formData.entries());
   const xhr = new XMLHttpRequest();
   xhr.onreadystatechange = () => {
     if (xhr.readyState === XMLHttpRequest.DONE && xhr.status == 200) {

@@ -1,8 +1,13 @@
 var express = require("express");
 var cors=require("cors");
+var bodyparser=require("body-parser");
 const dotenv = require("dotenv");
 const path = require("path");
 const app=express();
+app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({
+  extended:false
+}));
 dotenv.config();
 const PORT = process.env.PORT || 5500;
 const connectDB = require("./database");
