@@ -1,7 +1,7 @@
 let droparea = document.getElementById("dropbox");
 const fileinput = document.getElementById("fileInput");
 const uploadbtn = document.getElementById("upload_btn");
-const axios = require("axios");
+// const axios = require("axios");
 // const host='https://medias-share.herokuapp.com/'
 // const host = `innshare.herokuapp.com`;
 // const uploadURL = `${host}/api/file_sharing`;
@@ -9,7 +9,6 @@ const uploadURL = `http://localhost:5500/api/file_sharing/`;
 const FILE = document.getElementById("fileinput");
 const UPLOAD = document.getElementById("button");
 const SUBMIT = document.getElementById("submitfile");
-
 function closeNav() {
   document.getElementById("sidebar").style.width = "0";
 }
@@ -80,10 +79,10 @@ droparea.addEventListener("drop", (e) => {
 // })
 // })
 // el.click()});
-fileinput.addEventListener("change", () => {
+fileinput.addEventListener("onchange", () => {
   uploadfiles();
 });
-document.getElementById("button").addEventListener("click", (e) => {
+document.getElementById("button").addEventListener("onclick", (e) => {
   fileinput.click();
 });
 
@@ -139,5 +138,6 @@ function uploadfiles() {
   //  xhr.setRequestHeader("Access-Control-Request-Method", "POST");
   xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
   //  xhr.withCredentials=true;
-  xhr.send(formData);
+  console.log(formData);
+  // xhr.send(formData);
 }
