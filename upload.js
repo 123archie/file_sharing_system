@@ -1,5 +1,5 @@
 let droparea = document.getElementById("dropbox");
-var form=document.getElementById("form");
+var form = document.getElementById("form");
 const fileinput = document.getElementById("fileInput");
 const uploadbtn = document.getElementById("upload_btn");
 // const axios = require("axios");
@@ -33,68 +33,31 @@ droparea.addEventListener("drop", (e) => {
   droparea.classList.remove("dragged");
   droparea.style.backgroundColor = "white";
   const files = e.dataTransfer.files;
+  console.log(files);
   if (files.length) {
     fileinput.files = files;
     uploadfiles();
   }
 });
-//Upload button functionality
-// function upload() {
-//   // console.log("upload");
-//   fileinput.click();
-//   // const file=FILE.files[0];
-//   const formData = document.getElementById("form");
-//   const files = new FormData(formData);
-//   // files.append('myfile', file);
-//   console.log("FormData: " + files);
-//   if (files) {
-//     const xhr = new XMLHttpRequest();
-//     xhr.onreadystatechange = () => {
-//       console.log("XHR: " + xhr.readyState);
-//     };
-//     xhr.open("POST", uploadURL);
-//     xhr.send(files);
-//   }
-// }
 
-// console.log(UPLOAD);
-//   UPLOAD.addEventListener('change',(e)=>{
-//     e.preventDefault();
-//     console.log("upload event");
-//     var el=window._protected_reference=document.createElement('INPUT')
-//     console.log(el);
-//     el.type="file"
-//     el.addEventListener('change', ()=>{
-//       if(el.files.length){
-//         fileinput.files=el.files;
-//         uploadfiles()
-//       }
-//       new Promise(function(resolve){
-//         setTimeout(function(){
-//           console.log(el.files);
-//           resolve;
-//         }, 1000)
-//       }
-//     ).then(function(){
-//       el=window._protected_reference=undefined;
-// })
-// })
-// el.click()});
 fileinput.addEventListener("change", () => {
   uploadfiles();
 });
 document.getElementById("button").addEventListener("click", (e) => {
   fileinput.click();
 });
-
 function uploadfiles() {
   const file = fileinput.files[0];
   console.log(file);
-  let formData = new FormData(form);
-  console.log(formData.entries());
-  formData.append("myfile", file[0]);
-  console.log(formData.entries());
-  const xhr = new XMLHttpRequest();
+  var formData = new FormData(droparea);
+  console.log(...formData);
+  formData.append("myfile", file);
+  const xhr = new XMLHttpRequest(
+  //   processData: true,
+  //   contentType: true,
+  // }
+  );
+  console.log(...formData);
   xhr.onreadystatechange = () => {
     if (xhr.readyState === XMLHttpRequest.DONE && xhr.status == 200) {
       console.log(xhr.responseText);
@@ -142,6 +105,6 @@ function uploadfiles() {
   //  xhr.setRequestHeader("Access-Control-Request-Method", "POST");
   xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
   //  xhr.withCredentials=true;
-  console.log(formData);
-  // xhr.send(formData);
+  console.log(...formData);
+  xhr.send(...formData);
 }
