@@ -52,14 +52,10 @@ function uploadfiles() {
   var formData = new FormData(droparea);
   console.log(...formData);
   formData.append("myfile", file);
-  const xhr = new XMLHttpRequest(
-  //   processData: true,
-  //   contentType: true,
-  // }
-  );
+  const xhr = new XMLHttpRequest();
   console.log(...formData);
   xhr.onreadystatechange = () => {
-    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status == 200) {
+    if (xhr.readyState === xhr.DONE && xhr.status==200) {
       console.log(xhr.responseText);
     }
   };
@@ -74,7 +70,6 @@ function uploadfiles() {
       text.style.fontFamily = "spartan,sans-serif";
       text.style.textAlign = "right";
       text.style.marginRight = "20%";
-
       const input = document.createElement("input");
       input.setAttribute("type", "text");
       document.body.appendChild(input);
@@ -87,24 +82,20 @@ function uploadfiles() {
       input.style.fontFamily = "spartan,sans-serif";
       input.style.marginBottom = "100%";
       input.style.borderBlockColor = "#18a292";
-      // input.style.
       var media = window.matchMedia("max-width:760px");
       if (media.matches) {
         input.style.width = "100%";
       }
-      // input.value=scope.displayDetails;
-      // console.log(scope.cachedOptions);
-    }
-
+      }
     console.log(e);
   };
-
-  // console.log(axios.post(uploadURL))
   xhr.open("POST", uploadURL);
-  //   xhr.setRequestHeader("Access-Control-Request-Method", "POST");
-  //  xhr.setRequestHeader("Access-Control-Request-Method", "POST");
   xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-  //  xhr.withCredentials=true;
   console.log(...formData);
   xhr.send(...formData);
+ 
+  console.log(xhr.onreadystatechange);
+  console.log(xhr.readyState)
+  console.log(xhr.status);
+  console.log(xhr.DONE);
 }
