@@ -2,10 +2,6 @@ let droparea = document.getElementById("dropbox");
 var form = document.getElementById("form");
 const fileinput = document.getElementById("fileInput");
 const uploadbtn = document.getElementById("upload_btn");
-// const axios = require("axios");
-// const host='https://medias-share.herokuapp.com/'
-// const host = `innshare.herokuapp.com`;
-// const uploadURL = `${host}/api/file_sharing`;
 const uploadURL = `http://localhost:5500/api/file_sharing/`;
 const FILE = document.getElementById("fileinput");
 const UPLOAD = document.getElementById("button");
@@ -48,54 +44,43 @@ document.getElementById("button").addEventListener("click", (e) => {
 });
 function uploadfiles() {
   const file = fileinput.files[0];
-  console.log(file);
   var formData = new FormData(droparea);
-  console.log(...formData);
   formData.append("myfile", file);
   const xhr = new XMLHttpRequest();
-  console.log(...formData);
   xhr.onreadystatechange = () => {
-    if (xhr.readyState === xhr.DONE && xhr.status==200) {
-      console.log(xhr.responseText);
-    }
-  };
-  xhr.upload.onprogress = (e) => {
-    const percent = Math.round((e.loaded / e.total) * 100);
-    console.log(percent);
-    if (percent == 100) {
-      const text = document.getElementById("message");
-      text.innerHTML = "This link will expire in 24 hrs";
-      text.style.color = "#18a292";
-      text.style.fontSize = "1.5vw";
-      text.style.fontFamily = "spartan,sans-serif";
-      text.style.textAlign = "right";
-      text.style.marginRight = "20%";
-      const input = document.createElement("input");
-      input.setAttribute("type", "text");
-      document.body.appendChild(input);
-      input.style.width = "600px";
-      input.style.height = "40px";
-      input.style.fontSize = "20px";
-      input.style.border = "2px solid #18a292";
-      input.style.borderRadius = "12px";
-      input.style.paddingLeft = "10px";
-      input.style.fontFamily = "spartan,sans-serif";
-      input.style.marginBottom = "100%";
-      input.style.borderBlockColor = "#18a292";
-      var media = window.matchMedia("max-width:760px");
-      if (media.matches) {
-        input.style.width = "100%";
-      }
-      }
-    console.log(e);
-  };
+    // if (xhr.readyState === xhr.DONE && xhr.status==200) {
+      console.log(xhr.readyState);
+    // }
+  }  
+  // xhr.upload.onprogress = (e) => {
+  //   const percent = Math.round((e.loaded / e.total) * 100);
+  //   if (percent == 100) {
+  //     const text = document.getElementById("message");
+  //     text.innerHTML = "This link will expire in 24 hrs";
+  //     text.style.color = "#18a292";
+  //     text.style.fontSize = "1.5vw";
+  //     text.style.fontFamily = "spartan,sans-serif";
+  //     text.style.textAlign = "right";
+  //     text.style.marginRight = "20%";
+  //     const input = document.createElement("input");
+  //     input.setAttribute("type", "text");
+  //     document.body.appendChild(input);
+  //     input.style.width = "600px";
+  //     input.style.height = "40px";
+  //     input.style.fontSize = "20px";
+  //     input.style.border = "2px solid #18a292";
+  //     input.style.borderRadius = "12px";
+  //     input.style.paddingLeft = "10px";
+  //     input.style.fontFamily = "spartan,sans-serif";
+  //     input.style.marginBottom = "100%";
+  //     input.style.borderBlockColor = "#18a292";
+  //     var media = window.matchMedia("max-width:760px");
+  //     if (media.matches) {
+  //       input.style.width = "100%";
+  //     }
+  //     }
+  // };
   xhr.open("POST", uploadURL);
-  xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-  console.log(...formData);
-  xhr.send(...formData);
- 
-  console.log(xhr.onreadystatechange);
-  console.log(xhr.readyState)
-  console.log(xhr.status);
-  console.log(xhr.DONE);
-}
+  // xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+  xhr.send(formData);
+  }
