@@ -2,7 +2,8 @@ let droparea = document.getElementById("dropbox");
 var form = document.getElementById("form");
 const fileinput = document.getElementById("fileInput");
 const uploadbtn = document.getElementById("upload_btn");
-const uploadURL = `http://localhost:5500/api/file_sharing/`;
+const host="http://localhost:5500"
+const uploadURL=`${host}/api/file_sharing/test`
 const FILE = document.getElementById("fileinput");
 const UPLOAD = document.getElementById("button");
 const SUBMIT = document.getElementById("submitfile");
@@ -47,11 +48,11 @@ function uploadfiles() {
   var formData = new FormData(droparea);
   formData.append("myfile", file);
   const xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = () => {
-    // if (xhr.readyState === xhr.DONE && xhr.status==200) {
+  xhr.onreadystatechange = (e) => {
+    if (xhr.readyState === xhr.DONE  && xhr.status==200) {
       console.log(xhr.readyState);
-    // }
-  }  
+        }
+  }
   // xhr.upload.onprogress = (e) => {
   //   const percent = Math.round((e.loaded / e.total) * 100);
   //   if (percent == 100) {
@@ -80,7 +81,8 @@ function uploadfiles() {
   //     }
   //     }
   // };
-  xhr.open("POST", uploadURL);
-  // xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-  xhr.send(formData);
+  xhr.open('POST', uploadURL);
+  xhr.setRequestHeader("Content-type", "multipart/form-data");
+  xhr.setRequestHeader("Allow", "GET, HEAD, OPTIONS");
+ xhr.send(formData);
   }
