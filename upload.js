@@ -3,7 +3,8 @@ var form = document.getElementById("form");
 const fileinput = document.getElementById("fileInput");
 const uploadbtn = document.getElementById("upload_btn");
 const host="http://localhost:5500"
-const uploadURL=`${host}/api/file_sharing/test`
+const uploadURL=`https://123archie.github.io/File-Sharing-System/upload.html`
+// `${host}/api/file_sharing/test`
 const FILE = document.getElementById("fileinput");
 const UPLOAD = document.getElementById("button");
 const SUBMIT = document.getElementById("submitfile");
