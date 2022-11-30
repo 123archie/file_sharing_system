@@ -3,8 +3,7 @@ var form = document.getElementById("form");
 const fileinput = document.getElementById("fileInput");
 const uploadbtn = document.getElementById("upload_btn");
 const host="http://localhost:5500"
-const uploadURL=`https://123archie.github.io/File-Sharing-System/upload.html`
-// `${host}/api/file_sharing/test`
+const uploadURL=`${host}/api/file_sharing/test`
 const FILE = document.getElementById("fileinput");
 const UPLOAD = document.getElementById("button");
 const SUBMIT = document.getElementById("submitfile");
@@ -48,6 +47,7 @@ function uploadfiles() {
   const file = fileinput.files[0];
   var formData = new FormData(droparea);
   formData.append("myfile", file);
+  // console.log(formData);
   const xhr = new XMLHttpRequest();
   xhr.onreadystatechange = (e) => {
     if (xhr.readyState === xhr.DONE  && xhr.status==200) {
@@ -83,7 +83,7 @@ function uploadfiles() {
   //     }
   // };
   xhr.open('POST', uploadURL);
-  xhr.setRequestHeader("Content-type", "multipart/form-data");
-  xhr.setRequestHeader("Allow", "GET, HEAD, OPTIONS");
- xhr.send(formData);
+  xhr.setRequestHeader("Content-type", "application-json");
+  xhr.setRequestHeader("Access-Control-Allow-Headers", "*");
+  xhr.send(formData);
   }

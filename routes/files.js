@@ -5,6 +5,7 @@ const File = require("./models/fileSchema");
 const express=require('express')
 const app=express();
 const { v4: uuid4 } = require('uuid');
+const status = require("statuses");
 let storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, "uploads/"),
   filename: (req, file, cb) => {
@@ -19,14 +20,14 @@ let upload = multer({
 }).single("myfile");
 routes.post("/test",(req, resp) => {
 upload(req, resp, async (error) => {
+  
    if (!req.file) {
     return resp.json({ error: "Please upload your file" });
   }
   if (error) {
      return resp.status(500).send({ error: error.message });
   }
-  
-      const file = new File({
+  const file = new File({
       filename: req.file.filename,
       uuid: uuid4(),
       path: req.file.path,
@@ -45,5 +46,6 @@ upload(req, resp, async (error) => {
         )
       } 
    )
+   
  });
 module.exports = routes;
