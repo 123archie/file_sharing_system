@@ -1,3 +1,5 @@
+
+
 let droparea = document.getElementById("dropbox");
 var form = document.getElementById("form");
 const fileinput = document.getElementById("fileInput");
@@ -44,46 +46,50 @@ document.getElementById("button").addEventListener("click", (e) => {
   fileinput.click();
 });
 function uploadfiles() {
-  const file = fileinput.files[0];
-  var formData = new FormData(droparea);
-  formData.append("myfile", file);
-  // console.log(formData);
-  const xhr = new XMLHttpRequest();
+  var file = fileinput.files[0];
+  console.log(file);
+  var formData=new FormData(droparea);
+  console.log(formData.entries());
+  formData.append('myfile', file);
+  console.log(formData);
+  const xhr = new XMLHttpRequest;
   xhr.onreadystatechange = (e) => {
     if (xhr.readyState === xhr.DONE  && xhr.status==200) {
       console.log(xhr.readyState);
         }
   }
-  // xhr.upload.onprogress = (e) => {
-  //   const percent = Math.round((e.loaded / e.total) * 100);
-  //   if (percent == 100) {
-  //     const text = document.getElementById("message");
-  //     text.innerHTML = "This link will expire in 24 hrs";
-  //     text.style.color = "#18a292";
-  //     text.style.fontSize = "1.5vw";
-  //     text.style.fontFamily = "spartan,sans-serif";
-  //     text.style.textAlign = "right";
-  //     text.style.marginRight = "20%";
-  //     const input = document.createElement("input");
-  //     input.setAttribute("type", "text");
-  //     document.body.appendChild(input);
-  //     input.style.width = "600px";
-  //     input.style.height = "40px";
-  //     input.style.fontSize = "20px";
-  //     input.style.border = "2px solid #18a292";
-  //     input.style.borderRadius = "12px";
-  //     input.style.paddingLeft = "10px";
-  //     input.style.fontFamily = "spartan,sans-serif";
-  //     input.style.marginBottom = "100%";
-  //     input.style.borderBlockColor = "#18a292";
-  //     var media = window.matchMedia("max-width:760px");
-  //     if (media.matches) {
-  //       input.style.width = "100%";
-  //     }
-  //     }
-  // };
-  xhr.open('POST', uploadURL);
-  xhr.setRequestHeader("Content-type", "application-json");
+//  xhr.upload.onprogress = (e) => {
+//     const percent = Math.round((e.loaded / e.total) * 100);
+//     if (percent == 100) {
+//       const text = document.getElementById("message");
+//       text.innerHTML = "This link will expire in 24 hrs";
+//       text.style.color = "#18a292";
+//       text.style.fontSize = "1.5vw";
+//       text.style.fontFamily = "spartan,sans-serif";
+//       text.style.textAlign = "right";
+//       text.style.marginRight = "20%";
+//       const input = document.createElement("input");
+//       input.setAttribute("type", "text");
+//       document.body.appendChild(input);
+//       input.style.width = "600px";
+//       input.style.height = "40px";
+//       input.style.fontSize = "20px";
+//       input.style.border = "2px solid #18a292";
+//       input.style.borderRadius = "12px";
+//       input.style.paddingLeft = "10px";
+//       input.style.fontFamily = "spartan,sans-serif";
+//       input.style.marginBottom = "100%";
+//       input.style.borderBlockColor = "#18a292";
+//       var media = window.matchMedia("max-width:760px");
+//       if (media.matches) {
+//         input.style.width = "100%";
+//       }
+//       }
+//   };
+  xhr.open('POST', uploadURL, true);
+  xhr.setRequestHeader("Content-type","multipart/form-data; boundary=${formData._boundary");
   xhr.setRequestHeader("Access-Control-Allow-Headers", "*");
   xhr.send(formData);
+  console.log(formData.entries());
+  console.log(formData.values());
   }

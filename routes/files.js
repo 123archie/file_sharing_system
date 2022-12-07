@@ -13,14 +13,15 @@ let storage = multer.diskStorage({
       Math.random() * 1E9
     )}${path.extname(file.originalname)}`;
     cb(null, uniqueName);
-  }
+    console.log(uniqueName); }
 });
+
 let upload = multer({
   storage: storage
 }).single("myfile");
 routes.post("/test",(req, resp) => {
 upload(req, resp, async (error) => {
-  
+  console.log(req.file);
    if (!req.file) {
     return resp.json({ error: "Please upload your file" });
   }
