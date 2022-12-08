@@ -50,7 +50,7 @@ function uploadfiles() {
   console.log(file);
   var formData=new FormData(droparea);
   console.log(formData.entries());
-  formData.append('myfile', file);
+  formData.append("myfile", JSON.stringify(file));
   console.log(formData);
   const xhr = new XMLHttpRequest;
   xhr.onreadystatechange = (e) => {

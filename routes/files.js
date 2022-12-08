@@ -5,7 +5,7 @@ const File = require("./models/fileSchema");
 const express=require('express')
 const app=express();
 const { v4: uuid4 } = require('uuid');
-const status = require("statuses");
+
 let storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, "uploads/"),
   filename: (req, file, cb) => {
