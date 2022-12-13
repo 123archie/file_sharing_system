@@ -87,7 +87,7 @@ function uploadfiles() {
 //       }
 //   };
   xhr.open('POST', uploadURL, true);
-  xhr.setRequestHeader("Content-type","multipart/form-data; boundary=${formData._boundary");
+  xhr.setRequestHeader("Content-type","application-json");
   xhr.setRequestHeader("Access-Control-Allow-Headers", "*");
   xhr.send(formData);
   console.log(formData.entries());

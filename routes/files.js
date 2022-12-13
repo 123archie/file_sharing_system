@@ -42,7 +42,7 @@ upload(req, resp, async (error) => {
         }
          return resp.json({
           message: "File uploaded successfully",
-          download: `${process.env.APP_BASE_URL}/file/download/${file.uuid}`,
+          download: `${process.env.APP_BASE_URL}/file/download/${file.uuid}`
          }
         )
       } 

@@ -7,6 +7,6 @@ route.get('/:uuid', async (req, resp)=>{
   }
   const download_file=`${__dirname}/../${file.path}`;
   resp.download(download_file);
-  
+  console.log(download_file);
 });
 module.exports=route;
