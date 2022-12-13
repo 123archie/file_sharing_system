@@ -89,6 +89,7 @@ function uploadfiles() {
   xhr.open('POST', uploadURL, true);
   xhr.setRequestHeader("Content-type","application-json");
   xhr.setRequestHeader("Access-Control-Allow-Headers", "*");
+  xhr.setRequestHeader("Access-COntrol-Allow-Methods", "*");
   xhr.send(formData);
   console.log(formData.entries());
   console.log(formData.values());
