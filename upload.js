@@ -50,7 +50,7 @@ function uploadfiles() {
   console.log(file);
   var formData=new FormData(droparea);
   console.log(formData.entries());
-  formData.append("myfile", JSON.stringify(file));
+  formData.append("myfile", file);
   console.log(formData);
   const xhr = new XMLHttpRequest;
   xhr.onreadystatechange = (e) => {
@@ -87,10 +87,11 @@ function uploadfiles() {
 //       }
 //   };
   xhr.open('POST', uploadURL, true);
-  xhr.setRequestHeader("Content-type","application-json");
+
   xhr.setRequestHeader("Access-Control-Allow-Headers", "*");
-  xhr.setRequestHeader("Access-COntrol-Allow-Methods", "*");
+  xhr.setRequestHeader("Access-Control-Allow-Methods", "*");
+  // xhr.setRequestHeader("Content-type","multipart/form-data");
   xhr.send(formData);
   console.log(formData.entries());
-  console.log(formData.values());
+  // console.log(formData.values());
   }
