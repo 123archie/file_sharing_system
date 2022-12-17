@@ -60,39 +60,39 @@ function uploadfiles() {
       console.log(xhr.readyState);
         }
   }
-//  xhr.upload.onprogress = (e) => {
-//     const percent = Math.round((e.loaded / e.total) * 100);
-//     if (percent == 100) {
-//       const text = document.getElementById("message");
-//       text.innerHTML = "This link will expire in 24 hrs";
-//       text.style.color = "#18a292";
-//       text.style.fontSize = "1.5vw";
-//       text.style.fontFamily = "spartan,sans-serif";
-//       text.style.textAlign = "right";
-//       text.style.marginRight = "20%";
-//       const input = document.createElement("input");
-//       input.setAttribute("type", "text");
-//       document.body.appendChild(input);
-//       input.style.width = "600px";
-//       input.style.height = "40px";
-//       input.style.fontSize = "20px";
-//       input.style.border = "2px solid #18a292";
-//       input.style.borderRadius = "12px";
-//       input.style.paddingLeft = "10px";
-//       input.style.fontFamily = "spartan,sans-serif";
-//       input.style.marginBottom = "100%";
-//       input.style.borderBlockColor = "#18a292";
-//       var media = window.matchMedia("max-width:760px");
-//       if (media.matches) {
-//         input.style.width = "100%";
-//       }
-//       }
-//   };
+ xhr.upload.onprogress = (e) => {
+    const percent = Math.round((e.loaded / e.total) * 100);
+    console.log(percent);
+    if (percent == 100) {
+      // const text = document.getElementById("message");
+      // text.innerHTML = "This link will expire in 24 hrs";
+      // text.style.color = "#18a292";
+      // text.style.fontSize = "1.5vw";
+      // text.style.fontFamily = "spartan,sans-serif";
+      // text.style.textAlign = "right";
+      // text.style.marginRight = "20%";
+      // const input = document.createElement("input");
+      // input.setAttribute("type", "text");
+      // document.body.appendChild(input);
+      // input.style.width = "600px";
+      // input.style.height = "40px";
+      // input.style.fontSize = "20px";
+      // input.style.border = "2px solid #18a292";
+      // input.style.borderRadius = "12px";
+      // input.style.paddingLeft = "10px";
+      // input.style.fontFamily = "spartan,sans-serif";
+      // input.style.marginBottom = "100%";
+      // input.style.borderBlockColor = "#18a292";
+      // var media = window.matchMedia("max-width:760px");
+      // if (media.matches) {
+      //   input.style.width = "100%";
+      // }
+      }
+  };
   xhr.open('POST', uploadURL, true);
 
   xhr.setRequestHeader("Access-Control-Allow-Headers", "*");
   xhr.setRequestHeader("Access-Control-Allow-Methods", "*");
-  console.log(formData.entries());
   xhr.send(formData);
  
   // console.log(formData.values());
