@@ -49,9 +49,11 @@ function uploadfiles() {
   var file = fileinput.files[0];
   console.log(file);
   var formData=new FormData(droparea);
+ 
   console.log(formData.entries());
-  formData.append("myfile", file);
-  console.log(formData);
+  formData.append('myfile', JSON.stringify(file[0]));
+ 
+  console.log(formData.entries());
   const xhr = new XMLHttpRequest;
   xhr.onreadystatechange = (e) => {
     if (xhr.readyState === xhr.DONE  && xhr.status==200) {
@@ -90,8 +92,8 @@ function uploadfiles() {
 
   xhr.setRequestHeader("Access-Control-Allow-Headers", "*");
   xhr.setRequestHeader("Access-Control-Allow-Methods", "*");
-  // xhr.setRequestHeader("Content-type","multipart/form-data");
-  xhr.send(formData);
   console.log(formData.entries());
+  xhr.send(formData);
+ 
   // console.log(formData.values());
   }
