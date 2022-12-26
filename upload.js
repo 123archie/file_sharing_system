@@ -1,15 +1,15 @@
+// const link = document.getElementById("download");
 let droparea = document.getElementById("dropbox");
 var form = document.getElementById("form");
 const fileinput = document.getElementById("fileInput");
 const uploadbtn = document.getElementById("upload_btn");
-// const axios = require("axios");
-// const host='https://medias-share.herokuapp.com/'
-// const host = `innshare.herokuapp.com`;
-// const uploadURL = `${host}/api/file_sharing`;
-const uploadURL = `http://localhost:5500/api/file_sharing/`;
+const host="http://localhost:5500"
+const uploadURL=`${host}/api/file_sharing/test`
 const FILE = document.getElementById("fileinput");
 const UPLOAD = document.getElementById("button");
 const SUBMIT = document.getElementById("submitfile");
+// require('./routes/files');
+const textvalue=document.querySelector("#download");
 function closeNav() {
   document.getElementById("sidebar").style.width = "0";
 }
@@ -47,55 +47,33 @@ document.getElementById("button").addEventListener("click", (e) => {
   fileinput.click();
 });
 function uploadfiles() {
-  const file = fileinput.files[0];
+  var file = fileinput.files[0];
   console.log(file);
-  var formData = new FormData(droparea);
-  console.log(...formData);
-  formData.append("myfile", file);
-  const xhr = new XMLHttpRequest();
-  console.log(...formData);
-  xhr.onreadystatechange = () => {
-    if (xhr.readyState === xhr.DONE && xhr.status==200) {
-      console.log(xhr.responseText);
-    }
-  };
+  var formData=new FormData(droparea);
+ 
+  console.log(formData.entries());
+  formData.append('myfile', JSON.stringify(file[0]));
+ 
+  console.log(formData.entries());
+  const xhr = new XMLHttpRequest;
+  xhr.onreadystatechange = (e) => {
+    if (xhr.readyState === xhr.DONE  && xhr.status==200) {
+      console.log(xhr.readyState);
+        }
+  }
+
+  xhr.open('POST', uploadURL, true);
+  xhr.setRequestHeader("Access-Control-Allow-Headers", "*");
+  xhr.setRequestHeader("Access-Control-Allow-Methods", "*");
+  console.log(formData.entries());
+  // console.log(scope.displayDetails.A);
+  // console.log(scope.stringified);
+  xhr.send(formData);
   xhr.upload.onprogress = (e) => {
     const percent = Math.round((e.loaded / e.total) * 100);
-    console.log(percent);
-    if (percent == 100) {
-      const text = document.getElementById("message");
-      text.innerHTML = "This link will expire in 24 hrs";
-      text.style.color = "#18a292";
-      text.style.fontSize = "1.5vw";
-      text.style.fontFamily = "spartan,sans-serif";
-      text.style.textAlign = "right";
-      text.style.marginRight = "20%";
-      const input = document.createElement("input");
-      input.setAttribute("type", "text");
-      document.body.appendChild(input);
-      input.style.width = "600px";
-      input.style.height = "40px";
-      input.style.fontSize = "20px";
-      input.style.border = "2px solid #18a292";
-      input.style.borderRadius = "12px";
-      input.style.paddingLeft = "10px";
-      input.style.fontFamily = "spartan,sans-serif";
-      input.style.marginBottom = "100%";
-      input.style.borderBlockColor = "#18a292";
-      var media = window.matchMedia("max-width:760px");
-      if (media.matches) {
-        input.style.width = "100%";
-      }
-      }
-    console.log(e);
-  };
-  xhr.open("POST", uploadURL);
-  xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-  console.log(...formData);
-  xhr.send(...formData);
- 
-  console.log(xhr.onreadystatechange);
-  console.log(xhr.readyState)
-  console.log(xhr.status);
-  console.log(xhr.DONE);
+    };
+ };
+ const showLink=({file:url})=>{
+  console.log(url);
+  textvalue.value=url
 }

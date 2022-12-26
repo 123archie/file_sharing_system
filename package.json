@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "upload.js",
+  
   "scripts": {
     "dev": "nodemon express_server.js",
     "serve": "node express_server.js"
@@ -14,6 +15,7 @@
     "body-parser": "^1.20.1",
     "bytes": "^3.1.2",
     "call-bind": "^1.0.2",
+    "cli": "^1.0.1",
     "content-disposition": "^0.5.4",
     "content-type": "^1.0.4",
     "cookie": "^0.5.0",
@@ -41,12 +43,14 @@
     "iconv-lite": "^0.4.24",
     "inherits": "^2.0.4",
     "ipaddr.js": "^1.9.1",
+    "latest-version": "^7.0.0",
     "media-typer": "^0.3.0",
     "merge-descriptors": "^1.0.1",
     "methods": "^1.1.2",
     "mime": "^1.6.0",
     "mime-db": "^1.52.0",
     "mime-types": "^2.1.35",
+    "mongodb": "^4.12.1",
     "mongoose": "^6.6.1",
     "ms": "^2.0.0",
     "multer": "^1.4.5-lts.1",
@@ -86,7 +90,7 @@
   },
   "homepage": "https://github.com/123archie/File-Sharing-System#readme",
   "devDependencies": {
-    "express": "^4.18.1",
+    "express": "^4.18.2",
     "nodemon": "^2.0.20"
   }
 }

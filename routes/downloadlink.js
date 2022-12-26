@@ -1,4 +1,5 @@
 const route=require('express').Router();
+console.log("Checking the link");
 const File=require('./models/fileSchema');
 route.get('/:uuid', async (req, resp)=>{
   const file=await File.findOne({uuid:req.params.uuid});
@@ -7,6 +8,6 @@ route.get('/:uuid', async (req, resp)=>{
   }
   const download_file=`${__dirname}/../${file.path}`;
   resp.download(download_file);
-  
+  console.log(download_file);
 });
 module.exports=route;

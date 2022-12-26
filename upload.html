@@ -13,8 +13,7 @@
   </head>
   <body id="body">
     <nav>
-      <a
-        ><div id="hamburger" onclick="openNav()">
+      <a><div id="hamburger" onclick="openNav()">
           <iconify-icon
             icon="radix-icons:hamburger-menu"
             id="hamburger_menu"></iconify-icon></div
@@ -69,20 +68,23 @@
 <!-- ======= -->
     <img src="images/file-transfer-concept-backup-data-technology-cloud-upload-download_199064-156-removebg-preview.png" alt="" id="file_transfer">
     
-    <form id="dropbox" method="POST" enctype="multipart/form-data">
+    <form id="dropbox" name="Form" method="POST" enctype="multipart/form-data">
       <input type="file" name="myfile" id="fileInput">
       <iconify-icon icon="akar-icons:circle-plus" style="color:#18a292;"width="130"height="130;" id="plus"></iconify-icon>
       <p id="Droptext">Drop files here</p>
     </form> 
-    <form method="POST" id="form"  enctype="multipart/form-data">
+    <form method="POST" id="form"  enctype="application/x-www-form-urlencoded">
       <input id="fileinput" type="file" hidden>
       <input type="button" value="Upload File" id="button">
       <input type="submit" id="submitfile" hidden>
     </form>
-    <div id="message"></div>
+    <form id="formid">
+      <input type="text" name="download" id="download">
+    </form>
 <!-- >>>>>>> c00d724abb3d115c8300e5de2ddae349405ecb33 -->
     <script src="https://code.iconify.design/iconify-icon/1.0.0/iconify-icon.min.js"></script>
     <script src="upload.js"></script>
+    
   </body>
 </html>
 
