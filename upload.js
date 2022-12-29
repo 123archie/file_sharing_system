@@ -1,4 +1,3 @@
-// const link = document.getElementById("download");
 let droparea = document.getElementById("dropbox");
 var form = document.getElementById("form");
 const fileinput = document.getElementById("fileInput");
@@ -8,8 +7,7 @@ const uploadURL=`${host}/api/file_sharing/test`
 const FILE = document.getElementById("fileinput");
 const UPLOAD = document.getElementById("button");
 const SUBMIT = document.getElementById("submitfile");
-// require('./routes/files');
-const textvalue=document.querySelector("#download");
+const textvalue=document.querySelector("download");
 function closeNav() {
   document.getElementById("sidebar").style.width = "0";
 }
@@ -61,19 +59,14 @@ function uploadfiles() {
       console.log(xhr.readyState);
         }
   }
-
   xhr.open('POST', uploadURL, true);
   xhr.setRequestHeader("Access-Control-Allow-Headers", "*");
   xhr.setRequestHeader("Access-Control-Allow-Methods", "*");
   console.log(formData.entries());
-  // console.log(scope.displayDetails.A);
-  // console.log(scope.stringified);
   xhr.send(formData);
-  xhr.upload.onprogress = (e) => {
-    const percent = Math.round((e.loaded / e.total) * 100);
-    };
- };
- const showLink=({file:url})=>{
+};
+const showLink=({file:url})=>{
   console.log(url);
   textvalue.value=url
 }
+
